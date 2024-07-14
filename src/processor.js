@@ -2,33 +2,26 @@ import {
   getMinifiedName,
   minfiyFunctionDeclaration,
   minifyExpressionStatement,
+  minifyIndentifier,
   minifyVariableDeclaration,
 } from "./minfier.js";
 
 export function processAST(node) {
-  if (!node.body) {
-    console.log(`No Body Found for child ${node?.type ?? ""}`);
-    return;
+  if (!node?.type) return;
+
+  switch (node.type) {
+    case "Identifier":
+      minifyIndentifier(node);
   }
 
-  let childNodes = node.body;
+  const keys = Object.keys(node);
 
-  if (!Array.isArray(childNodes) && typeof childNodes === "object") {
-    childNodes = [childNodes];
-  }
+  for (const key of keys) {
+    if (typeof node[key] !== "object") continue;
 
-  for (const childNode of childNodes) {
-    switch (childNode.type) {
-      case "FunctionDeclaration":
-        minfiyFunctionDeclaration(childNode);
-        break;
-      case "VariableDeclaration":
-        minifyVariableDeclaration(childNode);
-        break;
-      case "ExpressionStatement":
-        minifyExpressionStatement(childNode);
-        break;
+    if (Array.isArray(node[key])) {
+      node[key].forEach((childNode) => processAST(childNode));
     }
-    processAST(childNode);
+    processAST(node[key]);
   }
 }

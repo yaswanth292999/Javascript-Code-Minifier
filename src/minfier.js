@@ -25,6 +25,79 @@ export function getMinifiedName(orginalName) {
   return minfiedName;
 }
 
+export function minifyIndentifier(node) {
+  if (node.type !== "Identifier") throw new Error("Identifier Not Found!!");
+  const variableName = node.name;
+  const minifiedName = getMinifiedName(variableName);
+  node.name = minifiedName;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//*************** All these functions are no longer in use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export function minifyVariableDeclaration(node) {
+  const declarations = node.declarations;
+
+  for (const declaration of declarations) {
+    const id = declaration.id;
+    minifyIndentifier(id);
+  }
+}
+
 export function minfiyFunctionDeclaration(node) {
   console.log(node);
   const functionName = node.id?.name;
@@ -38,22 +111,6 @@ export function minfiyFunctionDeclaration(node) {
   }
 
   return;
-}
-
-export function minifyVariableDeclaration(node) {
-  const declarations = node.declarations;
-
-  for (const declaration of declarations) {
-    const id = declaration.id;
-    minifyIndentifier(id);
-  }
-}
-
-export function minifyIndentifier(node) {
-  if (node.type !== "Identifier") throw new Error("Identifier Not Found!!");
-  const variableName = node.name;
-  const minifiedName = getMinifiedName(variableName);
-  node.name = minifiedName;
 }
 
 export function minifyExpressionStatement(node) {

@@ -14,9 +14,7 @@
 
 Doubts Hanging Currently
 
-1. What about function parameters ?
-2. what if we run out of alphabets in captial and small ?
-3. What if  there are multiple javascript function parameters with same name? [I guess we can replace all the instances since thats within the same context so we should be safe]
+1. Handle Built In object Properties and Inbuilt Functions 
 
 */
 
@@ -25,6 +23,7 @@ import escodegen from "escodegen";
 import fs from "fs";
 
 import { processAST } from "./processor.js";
+import { format } from "path";
 
 const jsFile = "../index.js";
 const jsCode = fs.readFileSync(jsFile, "utf-8");
@@ -35,6 +34,6 @@ fs.writeFileSync("./ast.json", JSON.stringify(ast), "utf-8");
 
 processAST(ast);
 
-const minifiedCode = escodegen.generate(ast);
+const minifiedCode = escodegen.generate(ast, { format: { compact: true } });
 
 fs.writeFileSync("../index.min.js", minifiedCode, "utf-8");
