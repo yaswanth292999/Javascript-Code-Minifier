@@ -1,21 +1,25 @@
 {
-  "name": "minify",
+  "name": "javascript-code-minifier",
   "version": "1.0.0",
-  "description": "a mimic of uglify.js",
-  "main": "minify.js",
+  "description": "javascript code minifier to reduce the bundle size",
+  "main": "./src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node minify.js"
+    "start": "cd src && node main.js"
   },
-  "keywords": [
-    "uglify.js",
-    "minifyjs",
-    "minfier"
-  ],
-  "type": "module",
-  "author": "yaswanth ambarukhana",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaswanth292999/Javascript-Code-Minifier.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaswanth292999/Javascript-Code-Minifier/issues"
+  },
+  "homepage": "https://github.com/yaswanth292999/Javascript-Code-Minifier#readme",
   "dependencies": {
-    "acorn": "^8.12.1"
+    "acorn": "^8.12.1",
+    "escodegen": "^2.1.0"
   }
 }
