@@ -1,0 +1,21 @@
+{
+  "name": "minify",
+  "version": "1.0.0",
+  "description": "a mimic of uglify.js",
+  "main": "minify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node minify.js"
+  },
+  "keywords": [
+    "uglify.js",
+    "minifyjs",
+    "minfier"
+  ],
+  "type": "module",
+  "author": "yaswanth ambarukhana",
+  "license": "ISC",
+  "dependencies": {
+    "acorn": "^8.12.1"
+  }
+}
